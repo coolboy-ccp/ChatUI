@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="grg-h0-i6l" customClass="EmojiCell" customModule="ChatUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KNF-Lt-XpA">
+                        <rect key="frame" x="9" y="9" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="YiU-ii-mNf"/>
+                            <constraint firstAttribute="width" constant="32" id="qLS-bv-hpa"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="KNF-Lt-XpA" firstAttribute="centerX" secondItem="grg-h0-i6l" secondAttribute="centerX" id="3MQ-ni-Ypw"/>
+                <constraint firstItem="KNF-Lt-XpA" firstAttribute="centerY" secondItem="grg-h0-i6l" secondAttribute="centerY" id="I83-de-3w4"/>
+                <constraint firstItem="KNF-Lt-XpA" firstAttribute="leading" secondItem="grg-h0-i6l" secondAttribute="leading" id="LYb-wX-32g"/>
+                <constraint firstAttribute="trailing" secondItem="KNF-Lt-XpA" secondAttribute="trailing" id="Ovr-GK-flP"/>
+                <constraint firstItem="KNF-Lt-XpA" firstAttribute="top" secondItem="grg-h0-i6l" secondAttribute="top" id="kph-l1-KbL"/>
+                <constraint firstAttribute="bottom" secondItem="KNF-Lt-XpA" secondAttribute="bottom" id="sTg-6W-Lm2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="PJb-5I-eP4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="kph-l1-KbL"/>
+                    <exclude reference="Ovr-GK-flP"/>
+                    <exclude reference="sTg-6W-Lm2"/>
+                    <exclude reference="LYb-wX-32g"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="emotionImageView" destination="KNF-Lt-XpA" id="aBd-mp-LkM"/>
+            </connections>
+            <point key="canvasLocation" x="2" y="76"/>
+        </collectionViewCell>
+    </objects>
+</document>

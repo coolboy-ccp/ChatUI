@@ -33,4 +33,9 @@ class ChatUITests: XCTestCase {
         }
     }
     
+    func testSize() {
+        XCTAssertEqual(CGSize(width: 10, height: 20), CGSize((10,20)))
+         XCTAssertNotEqual(CGSize(width: 10, height: 20), CGSize((10,10)))
+    }
+    
 }
