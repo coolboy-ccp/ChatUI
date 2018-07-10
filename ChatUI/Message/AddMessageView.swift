@@ -93,7 +93,7 @@ extension AddMessageView {
         case addFriend
     }
     
-    struct Defaults {
+    private struct Defaults {
         static let width: CGFloat = 140
         static let btnHeight: CGFloat = 44
         static let firstBtnY: CGFloat = 12

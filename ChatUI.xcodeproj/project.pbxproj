@@ -37,6 +37,11 @@
 		00007C8020EF62E3004D265B /* EmojiKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00007C7F20EF62E3004D265B /* EmojiKeyboard.xib */; };
 		00007C8220EF64D9004D265B /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00007C8120EF64D9004D265B /* EmojiView.swift */; };
 		00007C8320EF6BAB004D265B /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B1D4420EDCE6100A2E675 /* Themes.swift */; };
+		000C461220F4ACF20008304B /* ChatMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C461020F4ACF20008304B /* ChatMoreCell.swift */; };
+		000C461320F4ACF20008304B /* ChatMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000C461120F4ACF20008304B /* ChatMoreCell.xib */; };
+		000C461520F4ADED0008304B /* ChatMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C461420F4ADED0008304B /* ChatMoreView.swift */; };
+		000C461720F4ADF60008304B /* ChatMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 000C461620F4ADF60008304B /* ChatMoreView.xib */; };
+		000C461920F4B7210008304B /* FullyHorizontalFLY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C461820F4B7210008304B /* FullyHorizontalFLY.swift */; };
 		004B1D3320EDB03D00A2E675 /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B1D3120EDB03D00A2E675 /* MessageVC.swift */; };
 		004B1D3420EDB03D00A2E675 /* MessageVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 004B1D3220EDB03D00A2E675 /* MessageVC.xib */; };
 		004B1D3720EDB2BA00A2E675 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004B1D3520EDB2BA00A2E675 /* MessageCell.swift */; };
@@ -97,6 +102,11 @@
 		00007C7D20EF62D7004D265B /* EmojiKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiKeyboard.swift; sourceTree = "<group>"; };
 		00007C7F20EF62E3004D265B /* EmojiKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiKeyboard.xib; sourceTree = "<group>"; };
 		00007C8120EF64D9004D265B /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
+		000C461020F4ACF20008304B /* ChatMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMoreCell.swift; sourceTree = "<group>"; };
+		000C461120F4ACF20008304B /* ChatMoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatMoreCell.xib; sourceTree = "<group>"; };
+		000C461420F4ADED0008304B /* ChatMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMoreView.swift; sourceTree = "<group>"; };
+		000C461620F4ADF60008304B /* ChatMoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatMoreView.xib; sourceTree = "<group>"; };
+		000C461820F4B7210008304B /* FullyHorizontalFLY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullyHorizontalFLY.swift; sourceTree = "<group>"; };
 		004B1D3120EDB03D00A2E675 /* MessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
 		004B1D3220EDB03D00A2E675 /* MessageVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageVC.xib; sourceTree = "<group>"; };
 		004B1D3520EDB2BA00A2E675 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -145,6 +155,7 @@
 		00007C4120EF3740004D265B /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				000C460F20F4ACBA0008304B /* More */,
 				003365DD20F4534900AFCF7A /* Emoji */,
 				00007C4220EF3DD8004D265B /* ChatVC.swift */,
 				00007C4320EF3DD8004D265B /* ChatVC.xib */,
@@ -194,6 +205,18 @@
 				00007C7820EF6169004D265B /* message.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		000C460F20F4ACBA0008304B /* More */ = {
+			isa = PBXGroup;
+			children = (
+				000C461020F4ACF20008304B /* ChatMoreCell.swift */,
+				000C461120F4ACF20008304B /* ChatMoreCell.xib */,
+				000C461420F4ADED0008304B /* ChatMoreView.swift */,
+				000C461620F4ADF60008304B /* ChatMoreView.xib */,
+				000C461820F4B7210008304B /* FullyHorizontalFLY.swift */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 		003365DD20F4534900AFCF7A /* Emoji */ = {
@@ -381,7 +404,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000C461320F4ACF20008304B /* ChatMoreCell.xib in Resources */,
 				00007C7320EF6159004D265B /* sendmsg.caf in Resources */,
+				000C461720F4ADF60008304B /* ChatMoreView.xib in Resources */,
 				00007C7B20EF6169004D265B /* contact.json in Resources */,
 				00007C7120EF6159004D265B /* call.caf in Resources */,
 				004B1D3820EDB2BA00A2E675 /* MessageCell.xib in Resources */,
@@ -488,6 +513,7 @@
 				004B1D3E20EDB98000A2E675 /* ChatType.swift in Sources */,
 				00007C4720EF4104004D265B /* InputView.swift in Sources */,
 				004B1D4720EE074900A2E675 /* AddMessageView.swift in Sources */,
+				000C461220F4ACF20008304B /* ChatMoreCell.swift in Sources */,
 				00007C4B20EF43C7004D265B /* ChatButton.swift in Sources */,
 				004B1D3A20EDB3E200A2E675 /* Utils.swift in Sources */,
 				004B1D3C20EDB65500A2E675 /* MessageModel.swift in Sources */,
@@ -496,9 +522,11 @@
 				00007C4020EF1EF1004D265B /* ChatUITabbarVC.swift in Sources */,
 				004B1D4220EDC48D00A2E675 /* CCPColor.swift in Sources */,
 				00EAFB3A20EC6185000890D8 /* ViewController.swift in Sources */,
+				000C461920F4B7210008304B /* FullyHorizontalFLY.swift in Sources */,
 				00007C8220EF64D9004D265B /* EmojiView.swift in Sources */,
 				004B1D3720EDB2BA00A2E675 /* MessageCell.swift in Sources */,
 				004B1D3320EDB03D00A2E675 /* MessageVC.swift in Sources */,
+				000C461520F4ADED0008304B /* ChatMoreView.swift in Sources */,
 				00007C7E20EF62D7004D265B /* EmojiKeyboard.swift in Sources */,
 				00007C4420EF3DD8004D265B /* ChatVC.swift in Sources */,
 				00007C4E20EF5A14004D265B /* EmojiCell.swift in Sources */,

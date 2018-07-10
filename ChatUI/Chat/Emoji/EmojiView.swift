@@ -36,53 +36,53 @@ class EmojiView: UICollectionView {
     }
     
     @objc private func startBackspaceTimer() {
-        self.endBackspaceTimer()
-        self.backspaceTimer = Timer.repeat(0.1, { [unowned self] in
+        endBackspaceTimer()
+        backspaceTimer = Timer.repeat(0.1, { [unowned self] in
             if self.currentMagnifierCell.isDelete {
                 UIDevice.current.playInputClick()
                 self.didTapCell?(self.currentMagnifierCell)
             }
         })
-        RunLoop.main.add(self.backspaceTimer, forMode: RunLoopMode.commonModes)
+        RunLoop.main.add(backspaceTimer, forMode: RunLoopMode.commonModes)
     }
     
 
-    private func endBackspaceTimer() {
+    func endBackspaceTimer() {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(startBackspaceTimer), object: nil)
-        if self.backspaceTimer != nil {
-            self.backspaceTimer.invalidate()
-            self.backspaceTimer = nil
+        if backspaceTimer != nil {
+            backspaceTimer.invalidate()
+            backspaceTimer = nil
         }
     }
     
     private func tappedCell(_ touches: Set<UITouch>) -> EmojiCell? {
         let touch = touches.first!
         let point = touch.location(in: self)
-        let indexPath = self.indexPathForItem(at: point)
+        let indexPath = indexPathForItem(at: point)
         if let idp = indexPath {
-            let cell = self.cellForItem(at: idp) as! EmojiCell
+            let cell = cellForItem(at: idp) as! EmojiCell
             return cell
         }
         return nil
     }
     
-    private func hideMagnifierView() {
-        self.magnifierImageView.isHidden = true
+    func hideMagnifierView() {
+        magnifierImageView.isHidden = true
     }
     
     func showMagnifierForCell(_ cell: EmojiCell) {
         if cell.isDelete || cell.emotionImageView.image == nil {
-            self.hideMagnifierView()
+            hideMagnifierView()
             return
         }
         let rect: CGRect = cell.convert(cell.bounds, to: self)
-        self.magnifierImageView.center = CGPoint(x: rect.midX, y: self.magnifierImageView.center.y)
-        self.magnifierImageView.bottom = rect.maxY - 6
-        self.magnifierImageView.isHidden = false
+        magnifierImageView.center = CGPoint(x: rect.midX, y: magnifierImageView.center.y)
+        magnifierImageView.bottom = rect.maxY - 6
+        magnifierImageView.isHidden = false
         
-        self.magnifierContentImageView.image = cell.emotionImageView.image
-        self.magnifierContentImageView.y = 20
-        self.magnifierContentImageView.layer.removeAllAnimations()
+        magnifierContentImageView.image = cell.emotionImageView.image
+        magnifierContentImageView.y = 20
+        magnifierContentImageView.layer.removeAllAnimations()
         
         let duration: TimeInterval = 0.1
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseIn, animations: {
@@ -101,56 +101,56 @@ class EmojiView: UICollectionView {
 
 extension EmojiView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touchMoved = false
-        guard let cell = self.tappedCell(touches) else {
+        touchMoved = false
+        guard let cell = tappedCell(touches) else {
             return
         }
-        self.currentMagnifierCell = cell
-        self.showMagnifierForCell(self.currentMagnifierCell!)
+        currentMagnifierCell = cell
+        showMagnifierForCell(currentMagnifierCell!)
         if !cell.isDelete && cell.emotionImageView.image != nil {
             UIDevice.current.playInputClick()
         }
         
         if cell.isDelete {
-            self.endBackspaceTimer()
-            self.perform(#selector(startBackspaceTimer), with: nil, afterDelay: 0.5)
+            endBackspaceTimer()
+            perform(#selector(startBackspaceTimer), with: nil, afterDelay: 0.5)
         }
     }
     
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touchMoved = true
-        if self.currentMagnifierCell != nil && self.currentMagnifierCell!.isDelete {
+        touchMoved = true
+        if currentMagnifierCell != nil && currentMagnifierCell!.isDelete {
             return
         }
         
-        guard let cell = self.tappedCell(touches) else {
+        guard let cell = tappedCell(touches) else {
             return
         }
-        if cell != self.currentMagnifierCell {
-            if !self.currentMagnifierCell!.isDelete && !cell.isDelete {
-                self.currentMagnifierCell = cell
+        if cell != currentMagnifierCell {
+            if !currentMagnifierCell!.isDelete && !cell.isDelete {
+                currentMagnifierCell = cell
             }
-            self.showMagnifierForCell(cell)
+            showMagnifierForCell(cell)
         }
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let cell = tappedCell(touches) else {
-            self.endBackspaceTimer()
+            endBackspaceTimer()
             return
         }
-        let checkCell = !self.currentMagnifierCell!.isDelete && cell.emotionImageView.image != nil
-        let checkMove = !self.touchMoved && cell.isDelete
+        let checkCell = !currentMagnifierCell!.isDelete && cell.emotionImageView.image != nil
+        let checkMove = !touchMoved && cell.isDelete
         if checkCell || checkMove {
             didTapCell?(currentMagnifierCell)
         }
-        self.endBackspaceTimer()
-        self.hideMagnifierView()
+        endBackspaceTimer()
+        hideMagnifierView()
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>?, with event: UIEvent?) {
-        self.hideMagnifierView()
-        self.endBackspaceTimer()
+        hideMagnifierView()
+        endBackspaceTimer()
     }
 }

@@ -115,7 +115,7 @@ extension InputView {
         case more
     }
     
-    struct Defaults {
+    private struct Defaults {
         static let originHeight: CGFloat = 50
         static let maxTextviewHeight: CGFloat = 120
     }

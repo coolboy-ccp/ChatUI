@@ -19,28 +19,40 @@ class EmojiKeyboard: UIView {
     
     override func awakeFromNib() {
         self.isUserInteractionEnabled = true
-        
-        //calculate width and height
-        let itemWidth = (UIScreen.main.bounds.width - 10 * 2) / Defaults.oneRowCount
+        setLayout()
+        setCallback()
+        listTableSetting()
+       
+    }
+    
+    private func setCallback() {
+        listCollectionView.didTapCell = { [unowned self] cell in
+            if cell.isDelete {
+                self.delegate?.didTapBackspace(cell)
+            }
+            else {
+                self.delegate?.didTap(cell)
+            }
+        }
+    }
+    
+    private func setLayout() {
+        let itemWidth = (UIScreen.width - 10 * 2) / Defaults.oneRowCount
         let padding = (UIScreen.width - Defaults.oneRowCount * itemWidth) / 2.0
         let paddingLeft = padding
         let paddingRight = UIScreen.width - paddingLeft - itemWidth * Defaults.oneRowCount
-        
-        //init FlowLayout
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: itemWidth, height: Defaults.itemH)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsetsMake(0, paddingLeft, 0, paddingRight)
-        
-        //init listCollectionView
         self.listCollectionView.collectionViewLayout = layout
+    }
+    
+    private func listTableSetting() {
         listCollectionView.registerCellNib(EmojiCell.self)
         self.listCollectionView.isPagingEnabled = true
-//        self.listCollectionView.emotionScrollDelegate = self
-        
-        //init dataSource
         guard let emojiArray = Defaults.emojiArray else {
             fatalError("🌹🌹🌹 not found datasource")
         }
@@ -89,8 +101,32 @@ extension EmojiKeyboard: UICollectionViewDataSource {
     }
 }
 
-extension EmojiKeyboard {
+extension EmojiKeyboard: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
     
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+}
+
+extension EmojiKeyboard: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageWidth: CGFloat = self.listCollectionView.width
+        self.emotionPageControl.currentPage = Int(self.listCollectionView.contentOffset.x / pageWidth)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.listCollectionView.hideMagnifierView()
+        self.listCollectionView.endBackspaceTimer()
+    }
+}
+
+extension EmojiKeyboard: UIInputViewAudioFeedback {
+    internal var enableInputClicksWhenVisible: Bool {
+        get { return true }
+    }
 }
 
 extension EmojiKeyboard {

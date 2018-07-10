@@ -8,8 +8,7 @@
 
 import UIKit
 
-
-extension UIScreen{
+extension UIScreen {
     static var width: CGFloat {
         return UIScreen.main.bounds.width
     }
@@ -17,7 +16,12 @@ extension UIScreen{
 
 extension UIView {
     var width: CGFloat {
-        return self.bounds.width
+        set {
+            self.frame.size.width = newValue
+        }
+        get {
+            return self.frame.width
+        }
     }
     
     var height: CGFloat {
