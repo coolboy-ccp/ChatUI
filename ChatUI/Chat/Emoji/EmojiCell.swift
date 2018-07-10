@@ -27,17 +27,13 @@ class EmojiCell: UICollectionViewCell {
     
     func setContents(_ md: EmojiModel? = nil) {
         guard let md = md else {
-            emotionImageView.image = nil
+            emotionImageView.image = ChatImg.Emotion_delete.image
+            isDelete = true
+            model = nil
             return
         }
         model = md
         isDelete = false
-    }
-    
-    func setDeleteContents() {
-        model = nil
-        isDelete = true
-        emotionImageView.image = ChatImg.Emotion_delete.image
     }
     
     override func awakeFromNib() {

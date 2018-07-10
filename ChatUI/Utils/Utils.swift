@@ -74,13 +74,13 @@ extension UIViewController {
     
 }
 
-extension UITableView {
-    
+extension UITableView: CellRegisterable{
+    typealias T = UITableViewCell
     //cellClass name must equal to xib name
     func registerCellNib<T: UITableViewCell>(_ cellClass: T.Type) {
-        let name = String(describing: cellClass)
-        let nib = UINib(nibName: name, bundle: nil)
-        self.register(nib, forCellReuseIdentifier: name)
+        self.registerCellNib(cellClass) { (nib, identifier) in
+            self.register(nib, forCellReuseIdentifier: identifier)
+        }
     }
     
     func reusableCell<T: UITableViewCell>(_ cellClass: T.Type) -> T {
@@ -92,10 +92,68 @@ extension UITableView {
     }
 }
 
+extension UICollectionView: CellRegisterable {
+    typealias T = UICollectionViewCell
+    
+    func registerCellNib<T: UICollectionViewCell>(_ cellClass: T.Type) {
+        self.registerCellNib(cellClass) { (nib, identifier) in
+            self.register(nib, forCellWithReuseIdentifier: identifier)
+        }
+    }
+    
+    func resuableCell<R: UICollectionViewCell>(_ cellClass: R.Type, indexPath: IndexPath) -> R {
+        let name = String(describing: cellClass)
+        guard let cell = dequeueReusableCell(withReuseIdentifier: name, for: indexPath)
+            as? R else {
+            fatalError("🌹🌹🌹 [reusableCell]: \(name) isn't registed")
+        }
+        return cell
+    }
+}
+
+protocol CellRegisterable {
+    associatedtype T
+    func registerCellNib(_ cellClass: T.Type, block: (UINib, String) -> Void)
+}
+
+extension CellRegisterable {
+    func registerCellNib(_ cellClass: T.Type, block: (UINib, String) -> Void) {
+        let name = String(describing: cellClass)
+        let nib = UINib(nibName: name, bundle: nil)
+        block(nib, name)
+    }
+}
+
 extension UIButton {
     func setBackground(_ color: UIColor, state: UIControlState = .normal) {
         let img = color.toImage(CGSize(width: 1, height: 1))
         self.setBackgroundImage(img, for: state)
+    }
+}
+
+extension Timer {
+    class func `repeat`(_ interval: TimeInterval, _ block: @escaping ActionBlock) -> Timer {
+        return CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, CFAbsoluteTimeGetCurrent() + interval, interval, 0, 0, { (_) in
+            block()
+        })
+    }
+}
+
+extension Array {
+    /*
+     * 数组分组,size是每个组元素个数
+     */
+    func chunk(_ size: Int = 1) -> [[Element]] {
+        var result = [[Element]]()
+        var chunk = -1
+        for (index, elem) in self.enumerated() {
+            if index % size == 0 {
+                result.append([Element]())
+                chunk += 1
+            }
+            result[chunk].append(elem)
+        }
+        return result
     }
 }
 

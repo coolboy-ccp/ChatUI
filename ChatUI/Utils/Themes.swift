@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+extension UIScreen{
+    static var width: CGFloat {
+        return UIScreen.main.bounds.width
+    }
+}
+
 extension UIView {
     var width: CGFloat {
         return self.bounds.width
@@ -55,6 +62,15 @@ extension UIView {
         }
         set {
             self.center.x = newValue
+        }
+    }
+    
+    var bottom: CGFloat {
+        get {
+            return self.frame.maxY
+        }
+        set {
+            self.y = newValue - self.height
         }
     }
 }

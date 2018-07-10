@@ -37,8 +37,19 @@
                             <state key="normal" title="发送">
                                 <color key="titleColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                    <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <real key="value" value="0.5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="sendTaped:" destination="PTJ-Il-YOv" eventType="touchUpInside" id="uzs-gc-hd3"/>
+                                <action selector="send:" destination="PTJ-Il-YOv" eventType="touchUpInside" id="Ejs-ZN-7HF"/>
                             </connections>
                         </button>
                     </subviews>
@@ -53,7 +64,7 @@
                         <constraint firstAttribute="trailing" secondItem="GR0-dl-c0v" secondAttribute="trailing" constant="10" id="vCS-80-PCi"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ie7-bw-erR" customClass="TSChatEmotionScollView" customModule="TSWeChat" customModuleProvider="target">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ie7-bw-erR" customClass="TSChatEmotionScollView" customModule="ChatUI" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="5" width="320" height="161"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.94117647059999998" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GC2-Wo-OeP">

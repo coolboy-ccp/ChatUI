@@ -145,16 +145,12 @@
 		00007C4120EF3740004D265B /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				003365DD20F4534900AFCF7A /* Emoji */,
 				00007C4220EF3DD8004D265B /* ChatVC.swift */,
 				00007C4320EF3DD8004D265B /* ChatVC.xib */,
 				00007C4620EF4104004D265B /* InputView.swift */,
 				00007C4820EF410E004D265B /* InputView.xib */,
 				00007C4A20EF43C7004D265B /* ChatButton.swift */,
-				00007C4C20EF5A14004D265B /* EmojiCell.swift */,
-				00007C4D20EF5A14004D265B /* EmojiCell.xib */,
-				00007C7D20EF62D7004D265B /* EmojiKeyboard.swift */,
-				00007C7F20EF62E3004D265B /* EmojiKeyboard.xib */,
-				00007C8120EF64D9004D265B /* EmojiView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -198,6 +194,18 @@
 				00007C7820EF6169004D265B /* message.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		003365DD20F4534900AFCF7A /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				00007C4C20EF5A14004D265B /* EmojiCell.swift */,
+				00007C4D20EF5A14004D265B /* EmojiCell.xib */,
+				00007C7D20EF62D7004D265B /* EmojiKeyboard.swift */,
+				00007C7F20EF62E3004D265B /* EmojiKeyboard.xib */,
+				00007C8120EF64D9004D265B /* EmojiView.swift */,
+			);
+			path = Emoji;
 			sourceTree = "<group>";
 		};
 		004B1D3020EDAF5000A2E675 /* Message */ = {
